@@ -13,5 +13,8 @@ class Channel:
         self.id = id
 
     def print_info(self) -> None:
-        channel = YOUTUBE.channels().list(id=self.id, part='snippet,statistics').execute()
+        channel = YOUTUBE.channels().list(
+            id=self.id,
+            part='snippet,statistics'
+        ).execute()
         print(channel)
