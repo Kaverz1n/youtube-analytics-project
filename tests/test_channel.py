@@ -5,7 +5,7 @@ from src.channel import Channel
 
 @pytest.fixture
 def make_channel():
-    return Channel("AIzaSyDoZASHGsoIzkxWLAIIh79w6VB1g074nJE")
+    return Channel("UCjay7c-KSW2nC8Grq_q8tHg")
 
 
 def test_class(make_channel):
@@ -15,4 +15,10 @@ def test_class(make_channel):
 
 def test_init(make_channel):
     channel = make_channel
-    assert channel.id == "AIzaSyDoZASHGsoIzkxWLAIIh79w6VB1g074nJE"
+    assert channel.channel_id == "UCjay7c-KSW2nC8Grq_q8tHg"
+
+def test_channel_id(make_channel, capsys):
+    channel = make_channel
+    channel.channel_id = "dFdfdfsdfgdf"
+    output = capsys.readouterr()
+    assert output.out == "Ошибка\n"
