@@ -17,9 +17,74 @@ class Channel:
         self.title = data['items'][0]['snippet']['title']
         self.description = data['items'][0]['snippet']['description']
         self.url = f"https://www.youtube.com/channel/{self.__channel_id}"
-        self.subscriber_count = data['items'][0]['statistics']['subscriberCount']
-        self.video_count = data['items'][0]['statistics']['videoCount']
-        self.view_count = data['items'][0]['statistics']['viewCount']
+        self.subscriber_count = int(data['items'][0]['statistics']['subscriberCount'])
+        self.video_count = int(data['items'][0]['statistics']['videoCount'])
+        self.view_count = int(data['items'][0]['statistics']['viewCount'])
+
+    def __str__(self):
+        '''
+        Возвращает название канала и ссылку
+        в удобном формате
+        :return: описание канала с ссылкой
+        '''
+        return f'{self.title} ({self.url})'
+
+    def __add__(self, other):
+        '''
+        Складывает подписчиков двух каналов
+        :return: результат сложения подписчиков
+        '''
+        return self.subscriber_count + other.subscriber_count
+
+    def __sub__(self, other):
+        '''
+        Вычитаем подписчиков двух каналов
+        :return: результат вычитания подписчиков
+        '''
+        return self.subscriber_count - other.subscriber_count
+
+    def __lt__(self, other):
+        '''
+        Сравнивает подписчиков двух каналов
+        :return: True, если у первого канала меньше
+        подписчиков, в противном случае False
+        '''
+        return self.subscriber_count < other.subscriber_count
+
+    def __le__(self, other):
+        '''
+        Сравнивает подписчиков двух каналов
+        :return: True, если у первого канала меньше
+        или такое же кол-во подписчиков,
+        в противном случае False
+        '''
+        return self.subscriber_count <= other.subscriber_count
+
+    def __gt__(self, other):
+        '''
+        Сравнивает подписчиков двух каналов
+        :return: True, если у первого канала больше
+        подписчиков, в противном случае False
+        '''
+        return self.subscriber_count > other.subscriber_count
+
+    def __ge__(self, other):
+        '''
+        Сравнивает подписчиков двух каналов
+        :return: True, если у первого канала больше
+        или такое же кол-во подписчиков,
+        в противном случае False
+        '''
+        return self.subscriber_count >= other.subscriber_count
+
+    def __eq__(self, other):
+        '''
+        Сравнивает подписчиков двух каналов
+        :return: True, если у обоих каналов
+        одинаковое кол-во подписчиков,
+        иначе False
+        '''
+        return self.subscriber_count == other.subscriber_count
 
     def print_info(self) -> None:
         '''
