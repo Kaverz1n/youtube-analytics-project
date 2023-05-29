@@ -21,6 +21,9 @@ class Channel:
         self.video_count = int(data['items'][0]['statistics']['videoCount'])
         self.view_count = int(data['items'][0]['statistics']['viewCount'])
 
+    def __repr__(self):
+        return f"{self.__class__.__name__}('{self.__channel_id}')"
+
     def __str__(self):
         '''
         Возвращает название канала и ссылку
