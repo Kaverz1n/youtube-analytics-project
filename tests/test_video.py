@@ -17,7 +17,7 @@ def test_init(make_video):
     video = make_video
     assert video.video_id == "g8tN2LDkpDo"
     assert video.title == "🇺🇸GTA в реальной жизни. Лос-Анджелес"
-    assert video.url == "https://www.youtube.com/watch?v=g8tN2LDkpDo"
+    assert video.url == "https://youtu.be/g8tN2LDkpDo"
 
 
 def test_str(make_video):
