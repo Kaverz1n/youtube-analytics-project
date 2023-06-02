@@ -21,7 +21,7 @@ class PlayList():
         self.url = f'https://www.youtube.com/playlist?list={self._playlist_id}'
 
     def __repr__(self):
-        return f'{self.__class__.__name__}({self._playlist_id})'
+        return f"{self.__class__.__name__}('{self._playlist_id}')"
 
     def __str__(self):
         return f'{self.url}'
